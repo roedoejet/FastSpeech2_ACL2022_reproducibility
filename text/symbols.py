@@ -22,7 +22,7 @@ FLITE = Flite()
 ARPA_IPA = [x for x in FLITE.arpa_map.values() if x]
 
 _pad = "_"
-_punctuation = "!(),.;? ':"
+_punctuation = "!'(),.:;? "
 _moh_punctuation = "!(),.;? "
 _special = "-"
 _letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
