@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+message: "If you use this work in a project of yours and write about it, please cite our ACL 2022 paper using the following citation data."
+title: "Adapted FastSpeech2"
+version: 1.0.0
+url: "https://github.com/roedoejet/FastSpeech2"
+preferred-citation:
+  type: conference-paper
+  title: >-
+    Requirements and Motivations of Low-Resource Speech Synthesis for Language Revitalization
+  authors:
+    - given-names: Aidan
+      family-names: Pine
+      email: Aidan.Pine@nrc-cnrc.gc.ca
+      affiliation: National Research Council Canada
+    - given-names: Dan
+      family-names: Wells
+      email: dan.wells@ed.ac.uk
+      affiliation: University of Edinburgh
+    - family-names: "Nathan Thanyehténhas"
+      given-names: "Brinklow"
+      email: Patrick.Littell@nrc-cnrc.gc.ca
+      affiliation: Queen's University
+    - given-names: Patrick
+      family-names: Littell
+      email: Patrick.Littell@nrc-cnrc.gc.ca
+      affiliation: National Research Council Canada
+    - given-names: Korin
+      family-names: Richmond
+      email: korin.richmond@ed.ac.uk
+      affiliation: University of Edinburgh
+  collection-title: >-
+    "Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics"
+  year: 2022
+  month: 5
+  publisher:
+    name: Association for Computational Linguistics
+  url: https://aclanthology.org/2022.acl-long.507/
+  start: 7346
+  end: 7359
+  location:
+    name: Dublin, Ireland
+  abstract: >-
+    This paper describes the motivation and development of speech synthesis systems for the purposes of language revitalization. By building speech synthesis systems for three Indigenous languages spoken in Canada, Kanien’kéha, Gitksan & SENĆOŦEN, we re-evaluate the question of how much data is required to build low-resource speech synthesis systems featuring state-of-the-art neural models. For example, preliminary results with English data show that a FastSpeech2 model trained with 1 hour of training data can produce speech with comparable naturalness to a Tacotron2 model trained with 10 hours of data. Finally, we motivate future research in evaluation and classroom integration in the field of speech synthesis for language revitalization.
