@@ -178,6 +178,10 @@ Please inform me if you find any mistakes in this repo, or any useful tips to tr
 - [rishikksh20's FastSpeech 2 implementation](https://github.com/rishikksh20/FastSpeech2)
 
 # Citation
+
+Please cite [the paper](https://arxiv.org/abs/2006.04558). The citations for this implementation are as follows:
+
+Original Implementation:
 ```
 @INPROCEEDINGS{chien2021investigating,
   author={Chien, Chung-Ming and Lin, Jheng-Hao and Huang, Chien-yu and Hsu, Po-chun and Lee, Hung-yi},
@@ -188,4 +192,25 @@ Please inform me if you find any mistakes in this repo, or any useful tips to tr
   number={},
   pages={8588-8592},
   doi={10.1109/ICASSP39728.2021.9413880}}
+```
+
+This fork:
+```
+@inproceedings{pine-etal-2022-requirements,
+    title = "Requirements and Motivations of Low-Resource Speech Synthesis for Language Revitalization",
+    author = "Pine, Aidan  and
+      Wells, Dan  and
+      Brinklow, Nathan  and
+      Littell, Patrick  and
+      Richmond, Korin",
+    booktitle = "Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers)",
+    month = may,
+    year = "2022",
+    address = "Dublin, Ireland",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.acl-long.507",
+    doi = "10.18653/v1/2022.acl-long.507",
+    pages = "7346--7359",
+    abstract = "This paper describes the motivation and development of speech synthesis systems for the purposes of language revitalization. By building speech synthesis systems for three Indigenous languages spoken in Canada, Kanien{'}k{\'e}ha, Gitksan {\&} SEN{\'C}OŦEN, we re-evaluate the question of how much data is required to build low-resource speech synthesis systems featuring state-of-the-art neural models. For example, preliminary results with English data show that a FastSpeech2 model trained with 1 hour of training data can produce speech with comparable naturalness to a Tacotron2 model trained with 10 hours of data. Finally, we motivate future research in evaluation and classroom integration in the field of speech synthesis for language revitalization.",
+}
 ```
