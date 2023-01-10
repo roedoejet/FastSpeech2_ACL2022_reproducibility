@@ -1,0 +1,48 @@
+max_seq_len: 1000
+multi_speaker:
+  embedding_type: vector
+  locations:
+    encoder: false
+    variance_adaptor: false
+  use_multi_speaker: false
+multilingual: false
+transformer:
+  conv_filter_size: 1024
+  conv_kernel_size:
+  - 9
+  - 1
+  dec_kernel_sizes:
+  - 17
+  - 21
+  - 9
+  - 13
+  decoder_dropout: 0.2
+  decoder_head: 2
+  decoder_hidden: 256
+  decoder_layer: 4
+  depthwise_convolutions: true
+  enc_kernel_sizes:
+  - 5
+  - 25
+  - 13
+  - 9
+  encoder_dropout: 0.2
+  encoder_head: 2
+  encoder_hidden: 256
+  encoder_layer: 4
+  spe_feature_dim: 36
+  spe_features: false
+use_postnet: true
+use_spe_loss: false
+variance_embedding:
+  energy_quantization: linear
+  n_bins: 256
+  pitch_quantization: linear
+variance_predictor:
+  dropout: 0.5
+  filter_size: 256
+  kernel_size: 3
+  use_energy_predictor: false
+vocoder:
+  model: HiFi-GAN
+  speaker: universal

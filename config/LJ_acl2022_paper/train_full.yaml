@@ -1,0 +1,27 @@
+optimizer:
+  anneal_rate: 0.3
+  anneal_steps:
+  - 300000
+  - 400000
+  - 500000
+  batch_size: 16
+  betas:
+  - 0.9
+  - 0.98
+  eps: 1.0e-09
+  grad_acc_step: 1
+  grad_clip_thresh: 1.0
+  warm_up_step: 4000
+  weight_decay: 0.0
+path:
+  ckpt_path: ./output/ckpt/lj_full_char_fs2
+  log_path: ./output/log/lj_full_char_fs2
+  result_path: ./output/result/lj_full_char_fs2
+  spe_classifier_ckpt: '10000.pth.tar'
+  train_file: train.txt
+step:
+  log_step: 100
+  save_step: 50000
+  synth_step: 1000
+  total_step: 300000
+  val_step: 1000

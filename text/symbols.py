@@ -22,16 +22,16 @@ FLITE = Flite()
 ARPA_IPA = [x for x in FLITE.arpa_map.values() if x]
 
 _pad = "_"
-_punctuation = "!'(),.:;? "
+_punctuation = "!(),.;? "
 _moh_punctuation = "!(),.;? "
 _special = "-"
 _letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-_silences = ["sp", "spn", "sil"] # ["sp", "spn", "sil", "@sp", "@spn", "@sil"] can be used as well
+_silences = ["sp", "spn", "sil", "@sp", "@spn", "@sil"] # ["sp", "spn", "sil", "@sp", "@spn", "@sil"] can be used as well
 
 # Prepend "@" to ARPAbet symbols to ensure uniqueness (some are the same as uppercase letters):
 # _arpabet = ["@" + s for s in cmudict.valid_symbols]
 _arpabet = [s for s in cmudict.valid_symbols]
-_pinyin = [s for s in pinyin.valid_symbols]
+_pinyin = ["@" + s for s in pinyin.valid_symbols]
 
 MAPPINGS = {
     "git": {"norm": make_g2p("git", "git-equiv"), "ipa": make_g2p("git", "git-ipa")},
@@ -39,14 +39,21 @@ MAPPINGS = {
     "str": {"norm": make_g2p("str", "str-equiv"), "ipa": make_g2p("str", "str-ipa")},
 }
 
-IPA = {}
+IPA = {
+    k: [
+        normalize("NFC", c)
+        for cs in [x for x in MAPPINGS[k]["ipa"]._transducers[-1].mapping.mapping]
+        for c in cs["out"].split()
+    ]
+    for k in MAPPINGS.keys()
+}
 
-for lang in MAPPINGS.keys():
-    if isinstance(MAPPINGS[lang]['ipa'], CompositeTransducer):
-        chars = MAPPINGS[lang]["ipa"]._transducers[-1].mapping.mapping
-    else:
-        chars = MAPPINGS[lang]["ipa"].mapping.mapping
-    IPA[lang] = [normalize('NFC', c['out']) for c in chars]
+# for lang in MAPPINGS.keys():
+#     if isinstance(MAPPINGS[lang]['ipa'], CompositeTransducer):
+#         chars = MAPPINGS[lang]["ipa"]._transducers[-1].mapping.mapping
+#     else:
+#         chars = MAPPINGS[lang]["ipa"].mapping.mapping
+#     IPA[lang] = [normalize('NFC', c['out']) for c in chars]
 
 TOKENIZERS = {
     k: RegexpTokenizer("|".join(sorted(v, key=lambda x: len(x), reverse=True)))
@@ -75,6 +82,6 @@ CHARS = (
     # + _moh_orth
     + list(_letters)
     + _arpabet
-    + _pinyin   # NOTE: I've left this in as it's needed for the pretrained models from the original repo, but it's not necessary for training your own models (including LJ)
+    # + _pinyin   # NOTE: I've left this in as it's needed for the pretrained models from the original repo, but it's not necessary for training your own models (including LJ)
     + _silences
 )
