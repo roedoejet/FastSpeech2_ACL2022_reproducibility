@@ -2,13 +2,13 @@
 
 *This branch is for reproducing results from the ACL2022 paper*
 
-In order to do so, download the checkpoint that you want and put it in output/ckpt/lj_*_char_fs2 where * is the amount of training data option (15m, 30m, 1, 3, 5, 10, full). This repo is already set up to synthesize from the 15m checkpoint so you can use that as an example.
+To synthesize:
 
 ```
-python3 synthesize.py --text "hello world, how are you? I'm alright" --restore_step 200000 --mode single -p config/LJ_acl2022_paper/preprocess.yaml -m config/LJ_acl2022_paper/model.yaml -t config/LJ_acl2022_paper/train_15m.yaml
+python3 synthesize.py --text "hello world, how are you?" --restore_step 200000 --mode single -p config/LJ_acl2022_paper/preprocess.yaml -m config/LJ_acl2022_paper/model.yaml -t config/LJ_acl2022_paper/train_15m.yaml
 ```
 
-Replace the training config `-t` with any of the options (15m, train_30m, train_1, etc...). Like with the master branch, you will have to unzip the `hifigan/generator_universal.pth.tar.zip` file first.
+You can replace the training config `-t` with any of the options (15m, train_30m, train_1, etc...).
 
 This fork of ming024's implementation was used for my M.Sc. Speech & Language Processing dissertation, "Low Resource Speech Synthesis". The differences are outlined below.
 
