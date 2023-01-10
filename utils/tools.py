@@ -224,25 +224,26 @@ def synth_samples(targets, predictions, vocoder, model_config, preprocess_config
             pitch = expand(pitch, duration)
         else:
             pitch = predictions[2][i, :mel_len].detach().cpu().numpy()
-        if preprocess_config["preprocessing"]["energy"]["feature"] == "phoneme_level":
-            energy = predictions[3][i, :src_len].detach().cpu().numpy()
-            energy = expand(energy, duration)
-        else:
-            energy = predictions[3][i, :mel_len].detach().cpu().numpy()
-        with open(
-            os.path.join(preprocess_config["path"]["preprocessed_path"], "stats.json")
-        ) as f:
-            stats = json.load(f)
-            stats = stats["pitch"] + stats["energy"][:2]
-        fig = plot_mel(
-            [
-                (mel_prediction.cpu().numpy(), pitch, energy),
-            ],
-            stats,
-            ["Synthetized Spectrogram"],
-        )
-        plt.savefig(os.path.join(path, "{}.png".format(basename)))
-        plt.close()
+        if model_config['variance_predictor']['use_energy_predictor']:
+            if preprocess_config["preprocessing"]["energy"]["feature"] == "phoneme_level":
+                energy = predictions[3][i, :src_len].detach().cpu().numpy()
+                energy = expand(energy, duration)
+            else:
+                energy = predictions[3][i, :mel_len].detach().cpu().numpy()
+            with open(
+                os.path.join(preprocess_config["path"]["preprocessed_path"], "stats.json")
+            ) as f:
+                stats = json.load(f)
+                stats = stats["pitch"] + stats["energy"][:2]
+            fig = plot_mel(
+                [
+                    (mel_prediction.cpu().numpy(), pitch, energy),
+                ],
+                stats,
+                ["Synthetized Spectrogram"],
+            )
+            plt.savefig(os.path.join(path, "{}.png".format(basename)))
+            plt.close()
 
     from .model import vocoder_infer
 
