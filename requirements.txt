@@ -1,5 +1,5 @@
 epitran==1.9
-g2p==0.5.20220318
+git+https://github.com/roedoejet/g2p.git@ae7096cf18c9a37eb34efd8a55831e735ee7e2e0
 g2p-en == 2.1.0
 inflect == 4.1.0
 librosa == 0.7.2
